@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact – Rosino</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Cookie consent library -->
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
+    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="index.html"><img src="assets/images/logo.png" alt="Rosino Logo"></a>
+        <span class="origin">COLOGNE · GERMANY</span>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="collection.html">Collection</a></li>
+          <li><a href="artworks.html">Artworks</a></li>
+          <!-- Added link to the B2B page for luxury brand partners -->
+          <li><a href="Designers &amp; Brands.html">Designers &amp; Brands</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="mailto:sale@rosinoonline.com">Contact</a></li>
+        </ul>
+      </nav>
+      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+    <div class="container">
+      <h1>Contact Us</h1>
+      <p>We would love to hear from you. For inquiries about our pieces or any other questions, please reach out via email.</p>
+      <p>Email: <a href="mailto:sale@rosinoonline.com">sale@rosinoonline.com</a></p>
+
+      <!-- Contact form allowing general or business enquiries -->
+      <form class="contact-form" action="mailto:sale@rosinoonline.com" method="post" enctype="text/plain">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" name="name" required>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="inquiry-type">Inquiry Type</label>
+        <select id="inquiry-type" name="inquiry-type">
+          <option value="general">General</option>
+          <option value="business">Business / Designer</option>
+        </select>
+
+        <label for="message">Message</label>
+        <textarea id="message" name="message" rows="4" required></textarea>
+
+        <button type="submit" class="contact-btn">Send</button>
+      </form>
+    </div>
+    <div class="footer">
+      <p>&copy; 2025 Rosino. All rights reserved. | <a href="legal.html">Legal &amp; Policies</a></p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

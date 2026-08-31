@@ -1,0 +1,1714 @@
+.b2b-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 13px;
+  color: #c9c9c9;
+  margin: 15px auto 40px auto;
+  line-height: 1.4;
+  max-width: 900px;
+}
+
+/* =============================================================
+ * Rosino home gateway and dedicated collection page
+ */
+.home-landing {
+  overflow: hidden;
+}
+
+.home-intro {
+  max-width: 900px;
+  padding-top: 76px;
+  padding-bottom: 52px;
+  text-align: center;
+}
+
+.home-intro h1 {
+  color: #fff;
+  font-size: clamp(42px, 7vw, 82px);
+  line-height: 0.98;
+  letter-spacing: -0.035em;
+  margin: 0;
+}
+
+.home-intro > p:last-child {
+  color: #aaa;
+  font-size: clamp(14px, 1.5vw, 17px);
+  line-height: 1.7;
+  margin: 22px auto 0;
+  max-width: 680px;
+}
+
+.home-path-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  padding-top: 0;
+  padding-bottom: 62px;
+}
+
+.home-path-card {
+  position: relative;
+  min-height: 620px;
+  overflow: hidden;
+  border: 1px solid #242424;
+  border-radius: 7px;
+  color: #fff;
+  isolation: isolate;
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.36);
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+
+.home-path-card:hover {
+  border-color: rgba(209, 141, 98, 0.72);
+  color: #fff;
+  transform: translateY(-4px);
+}
+
+.home-path-card > img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.8s cubic-bezier(0.2, 0.65, 0.25, 1), filter 0.5s ease;
+}
+
+.home-path-card--collection > img {
+  filter: brightness(0.72) contrast(1.08) saturate(1.12);
+  object-position: center center;
+}
+
+.home-path-card--artworks > img {
+  filter: brightness(0.72) contrast(1.05);
+  object-position: center center;
+}
+
+.home-path-card:hover > img {
+  transform: scale(1.035);
+}
+
+.home-path-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 28%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.home-path-copy {
+  position: absolute;
+  right: 34px;
+  bottom: 34px;
+  left: 34px;
+}
+
+.home-path-label {
+  display: block;
+  color: #e4a77d;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.23em;
+  margin-bottom: 11px;
+}
+
+.home-path-card h2 {
+  color: #fff;
+  font-size: clamp(32px, 4vw, 48px);
+  line-height: 1.05;
+  margin: 0 0 14px;
+}
+
+.home-path-card p {
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0 0 24px;
+  max-width: 440px;
+}
+
+.home-path-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: #fff;
+  border-bottom: 1px solid #D18D62;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+}
+
+.home-values {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1px;
+  padding-top: 0;
+  padding-bottom: 72px;
+}
+
+.home-values > div {
+  min-height: 138px;
+  background: #090909;
+  border: 1px solid #1e1e1e;
+  padding: 26px;
+}
+
+.home-values span {
+  color: #D18D62;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+}
+
+.home-values h2 {
+  color: #eee;
+  font-size: 16px;
+  margin: 13px 0 8px;
+}
+
+.home-values p {
+  color: #888;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.home-b2b-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 36px;
+  border-top: 1px solid #242424;
+  padding-top: 52px;
+  padding-bottom: 78px;
+}
+
+.home-b2b-panel h2 {
+  color: #fff;
+  font-size: clamp(28px, 4vw, 44px);
+  margin: 0 0 12px;
+}
+
+.home-b2b-panel > div > p:last-child {
+  color: #929292;
+  font-size: 13px;
+  line-height: 1.65;
+  margin: 0;
+  max-width: 650px;
+}
+
+.home-b2b-panel > a {
+  flex: 0 0 auto;
+  border: 1px solid #D18D62;
+  border-radius: 24px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  padding: 11px 18px;
+  text-transform: uppercase;
+}
+
+.home-b2b-panel > a:hover {
+  background: #D18D62;
+  color: #000;
+}
+
+.collection-page {
+  padding-top: 26px;
+}
+
+.collection-hero {
+  position: relative;
+  min-height: 520px;
+  overflow: hidden;
+  border: 1px solid #242424;
+  border-radius: 7px;
+  isolation: isolate;
+  margin-bottom: 74px;
+}
+
+.collection-hero > img {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center 52%;
+  filter: brightness(0.72) contrast(1.08) saturate(1.12);
+}
+
+.collection-hero-shade {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background: linear-gradient(90deg, rgba(0, 0, 0, 0.92) 0%, rgba(0, 0, 0, 0.58) 48%, rgba(0, 0, 0, 0.18) 100%);
+}
+
+.collection-hero-copy {
+  position: absolute;
+  top: 50%;
+  left: clamp(28px, 6vw, 74px);
+  width: min(520px, 72%);
+  transform: translateY(-50%);
+}
+
+.collection-hero h1 {
+  color: #fff;
+  font-size: clamp(42px, 7vw, 76px);
+  line-height: 1;
+  letter-spacing: -0.035em;
+  margin: 0 0 18px;
+}
+
+.collection-hero-copy > p:last-child {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 14px;
+  line-height: 1.7;
+  margin: 0;
+}
+
+.collection-heading-row {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 24px;
+  margin-bottom: 26px;
+}
+
+.collection-heading-row h2 {
+  color: #fff;
+  font-size: clamp(30px, 4vw, 46px);
+  line-height: 1.05;
+  margin: 0;
+}
+
+.collection-heading-row > span {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  padding-bottom: 7px;
+  text-transform: uppercase;
+}
+
+.collection-page .stone-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 24px;
+}
+
+.collection-page .stone-item {
+  background: #090909;
+  border: 1px solid #1e1e1e;
+  border-radius: 6px;
+  padding-bottom: 15px;
+  transition: border-color 0.35s ease, transform 0.35s ease;
+}
+
+.collection-page .stone-item:hover {
+  border-color: rgba(209, 141, 98, 0.55);
+  transform: translateY(-4px);
+}
+
+.collection-page .stone-item a {
+  overflow: hidden;
+}
+
+.collection-page .stone-item img {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+.collection-page .stone-title {
+  text-align: left;
+  color: #d9d9d9;
+  font-size: 13px;
+  margin: 14px 15px 0;
+}
+
+.collection-page .pagination {
+  border-top: 1px solid #1e1e1e;
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  margin: 44px 0 24px;
+  padding-top: 18px;
+  text-transform: uppercase;
+}
+
+@media (max-width: 900px) {
+  .home-path-card {
+    min-height: 540px;
+  }
+
+  .home-values {
+    grid-template-columns: 1fr;
+  }
+
+  .home-values > div {
+    min-height: 0;
+  }
+
+  .home-b2b-panel {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .collection-page .stone-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .home-intro {
+    width: 92%;
+    padding-top: 42px;
+    padding-bottom: 36px;
+  }
+
+  .home-path-grid {
+    width: 92%;
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .home-path-card {
+    min-height: 520px;
+  }
+
+  .home-path-copy {
+    right: 23px;
+    bottom: 25px;
+    left: 23px;
+  }
+
+  .home-values,
+  .home-b2b-panel,
+  .collection-page {
+    width: 92%;
+  }
+
+  .collection-hero {
+    min-height: 440px;
+    margin-bottom: 52px;
+  }
+
+  .collection-hero-shade {
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.18) 18%, rgba(0, 0, 0, 0.9) 100%);
+  }
+
+  .collection-hero-copy {
+    top: auto;
+    right: 24px;
+    bottom: 28px;
+    left: 24px;
+    width: auto;
+    transform: none;
+  }
+
+  .collection-heading-row {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 520px) {
+  .home-path-card {
+    min-height: 480px;
+  }
+
+  .collection-page .stone-grid {
+    grid-template-columns: 1fr;
+    gap: 18px;
+  }
+}
+
+.b2b-badge .bullet {
+  color: #D18D62;
+  font-size: 16px;
+}
+
+.b2b-badge a {
+  color: #D18D62;
+  font-size: 12px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.3s ease;
+}
+
+.b2b-badge a:hover {
+  border-bottom: 1px solid #D18D62;
+}
+/* Global styles */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;700&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Montserrat', sans-serif;
+  background-color: #000;
+  color: #fff;
+  line-height: 1.5;
+}
+
+a {
+  color: #D18D62; /* copper tone */
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+a:hover {
+  color: #e1a97a;
+}
+
+/* Header & Navigation */
+header {
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+header .logo {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-size: 32px;
+  font-weight: 700;
+  color: #D18D62;
+}
+
+/* Small descriptor under the logo to highlight the brand origin */
+.logo .origin {
+  font-size: 12px;
+  color: #D18D62;
+  margin-top: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+}
+
+/* Style navigation links as pill-shaped buttons */
+nav li a {
+  display: block;
+  padding: 8px 16px;
+  border: 1px solid #D18D62;
+  border-radius: 20px;
+  color: #D18D62;
+  font-weight: 500;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+nav li a:hover {
+  background-color: #D18D62;
+  color: #000;
+}
+
+/* Main container */
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 0;
+}
+
+/* Gallery grid on home */
+.stone-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.stone-item {
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.stone-item img {
+  width: 100%;
+  display: block;
+  height: auto;
+  transition: transform 0.3s ease;
+}
+
+.stone-item:hover img {
+  transform: scale(1.05);
+}
+
+/* Centered overlay for desktop hover */
+.stone-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.6);
+  color: #fff;
+  padding: 10px 15px;
+  text-align: center;
+  font-weight: 600;
+  border-radius: 4px;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  pointer-events: none;
+}
+
+.stone-item:hover .stone-overlay {
+  opacity: 1;
+}
+
+/* Darken image on hover to highlight overlay */
+.stone-item:hover img {
+  filter: brightness(0.7);
+}
+
+/* Stone detail page */
+.hero {
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+/*
+ * Ensure that each anchor inside a stone item has relative positioning and is
+ * displayed as a block-level element. This allows the absolutely positioned
+ * watermark overlay to be anchored to the correct parent (the clickable link
+ * around the image) without affecting document flow. Without this rule the
+ * watermark may appear underneath the image instead of on top.
+ */
+.stone-item a {
+  position: relative;
+  display: block;
+}
+
+.details {
+  margin-bottom: 40px;
+}
+
+.gallery {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  margin-bottom: 40px;
+}
+
+.gallery img {
+  width: calc(33.333% - 10px);
+  height: auto;
+  border-radius: 4px;
+}
+
+.next-work {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.next-work img {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: block;
+  margin: 0 auto 10px;
+}
+
+.footer {
+  background-color: #111;
+  padding: 20px 0;
+  text-align: center;
+  font-size: 14px;
+  color: #777;
+}
+
+.footer a {
+  color: #D18D62;
+  margin: 0 10px;
+}
+
+/* Tagline styling */
+/* Tagline styling - emphasize the brand motto on the home page */
+.tagline {
+  font-size: 48px;
+  font-weight: 700;
+  color: #D18D62;
+  text-align: center;
+  margin: 60px 0 20px 0;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+}
+
+/* Badge indicating a stone has a Rosino uniqueness certificate */
+/*
+ * Badge displayed under each product title to indicate the item has an
+ * individual Rosino uniqueness certificate.  To keep the page feeling
+ * refined and luxurious the badge uses a much smaller type size than
+ * the surrounding titles.  Additional letter‑spacing improves
+ * readability at this reduced scale.
+ */
+/*
+ * Badge displayed under each product title to indicate the item has an
+ * individual Rosino uniqueness certificate.  In previous iterations the
+ * badge text still appeared too large relative to the surrounding
+ * typography.  To achieve a subtler look the font size has been further
+ * reduced and spacing tightened.  These tweaks help the label sit
+ * quietly beneath the product title without competing for attention.
+ */
+.cert-badge {
+  font-size: 6px;
+  color: #d4a574;          /* maintain the soft copper tone for harmony */
+  margin-top: 2px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.6px;
+  opacity: 0.75;
+}
+
+/* Watermark placed on images to show certified unique stones */
+/*
+ * Watermark placed on certified item images.  The overlay sits in the
+ * lower‑right corner of the image and should never detract from the
+ * photograph itself.  A translucent dark backdrop and modest text
+ * size ensure the label remains legible yet understated.  The text
+ * remains in the brand's copper colour for cohesion.
+ */
+/*
+ * Watermark placed on certified item images.  The previous design used a
+ * very light copper colour and modest backdrop which, while subtle,
+ * proved difficult to read on some backgrounds.  This version increases
+ * text weight slightly and darkens the backdrop for improved contrast
+ * across light and dark imagery.  Padding is adjusted for more breathing
+ * space and the opacity lowered slightly to blend with the photo.  A
+ * stronger shadow further separates the text from the underlying picture.
+ */
+.watermark {
+  position: absolute;
+  bottom: 8px;
+  right: 10px;
+  font-size: 9px;
+  font-weight: 600;
+  color: #d2a66b;
+  background: rgba(0, 0, 0, 0.65);
+  padding: 4px 8px;
+  border-radius: 4px;
+  opacity: 0.9;
+  pointer-events: none;
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: 1px;
+  text-shadow: 0 0 3px rgba(0, 0, 0, 0.9);
+}
+
+/* Button styling for authenticity certificate download */
+.cert-btn {
+  display: inline-block;
+  background: linear-gradient(135deg, #e4b47a, #c8935b);
+  color: #000;
+  padding: 10px 18px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  margin-top: 15px;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+.cert-btn:hover {
+  opacity: 0.9;
+}
+
+/* Subtitle under tagline */
+.subtitle {
+  font-size: 15px;
+  text-align: center;
+  color: #ccc;
+  margin-bottom: 40px;
+}
+
+/* Logo image in header */
+.logo img {
+  max-height: 60px;
+  width: auto;
+}
+
+/* Hamburger menu styling */
+button.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+}
+
+button.hamburger span {
+  display: block;
+  width: 25px;
+  height: 3px;
+  background-color: #D18D62;
+  border-radius: 2px;
+  transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+/* Mobile navigation styles */
+@media (max-width: 768px) {
+  header {
+    position: relative;
+  }
+
+  nav ul {
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background-color: #000;
+    width: 200px;
+    border: 1px solid #333;
+    padding: 10px 0;
+    display: none;
+    z-index: 1000;
+  }
+
+  nav.open ul {
+    display: flex;
+  }
+
+  button.hamburger {
+    display: flex;
+  }
+
+  nav ul li {
+    margin: 0;
+    padding: 10px 20px;
+    text-align: center;
+  }
+}
+
+/* Hamburger active state */
+button.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+button.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+button.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+/* Product titles below each image */
+.stone-title {
+  text-align: center;
+  color: #D18D62;
+  margin-top: 10px;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* Pagination bar styling */
+.pagination {
+  text-align: center;
+  margin: 30px 0;
+  color: #777;
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Pagination controls */
+.pagination .page-link {
+  color: #D18D62;
+  margin: 0 5px;
+  padding: 4px 8px;
+  border: 1px solid #D18D62;
+  border-radius: 4px;
+  text-decoration: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.pagination .page-link:hover {
+  background-color: #D18D62;
+  color: #000;
+}
+
+.pagination .page-indicator {
+  color: #D18D62;
+  margin: 0 8px;
+  font-size: 14px;
+}
+
+/* Adjust gallery grid for mobile to two columns */
+@media (max-width: 768px) {
+  .stone-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+  }
+}
+
+/* Lightbox overlay styles for stone detail pages */
+.lightbox-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 3000;
+}
+
+.lightbox-overlay.active {
+  display: flex;
+}
+
+.lightbox-overlay img {
+  max-width: 90%;
+  max-height: 90%;
+  border-radius: 4px;
+}
+
+.lightbox-overlay .close {
+  position: absolute;
+  top: 20px;
+  right: 30px;
+  color: #fff;
+  font-size: 32px;
+  font-weight: bold;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media (max-width: 768px) {
+
+    header {
+        padding-top: 15px !important;
+        padding-bottom: 10px !important;
+    }
+    h2.tagline {
+        font-size: 29px !important;
+        line-height: 1.2 !important;
+        margin-top: 5px !important;
+        margin-bottom: 10px !important;
+    }
+    p.subtitle {
+        margin-top: 0 !important;
+    }
+}
+
+/* Generic call-to-action button style. Specific sections may override these rules. */
+.cta-button {
+  display: inline-block;
+  background-color: #D18D62;
+  color: #000;
+  padding: 10px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.cta-button:hover {
+  background-color: #e1a97a;
+  color: #000;
+}
+
+/* =============================================================
+ * B2B and partnership styles
+ * These styles support the new “For Brands” pages and the promo
+ * section on the home page. The design intentionally keeps the
+ * look minimal and refined to match the luxury aesthetic of Rosino.
+ */
+
+/* Promotional section on the home page for luxury brands */
+.b2b-promo {
+  /* further refined: lighter background, tighter spacing and narrower width */
+  background: rgba(255, 255, 255, 0.02);
+  padding: 12px 18px;
+  margin: 28px auto 40px auto;
+  text-align: center;
+  border: 1px solid rgba(209, 141, 98, 0.18);
+  border-radius: 4px;
+  max-width: 520px;
+}
+
+.b2b-promo h2 {
+  color: #D18D62;
+  font-size: 15px;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 600;
+}
+
+.b2b-promo p {
+  color: #ccc;
+  font-size: 12px;
+  max-width: 600px;
+  margin: 0 auto 12px auto;
+  line-height: 1.55;
+}
+
+.b2b-promo .cta-button {
+  padding: 5px 14px;
+  font-size: 11px;
+  border-radius: 18px;
+  border: 1px solid #D18D62;
+  background: transparent;
+  color: #D18D62;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.b2b-promo .cta-button:hover {
+  background: #D18D62;
+  color: #000;
+}
+
+/* Hero section on the B2B page */
+.b2b-hero {
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.b2b-hero h1 {
+  font-size: 42px;
+  color: #D18D62;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+.b2b-hero p {
+  color: #ccc;
+  font-size: 16px;
+  max-width: 800px;
+  margin: 0 auto 10px auto;
+}
+
+/* Services section on the B2B page */
+.b2b-services h2 {
+  font-size: 32px;
+  color: #D18D62;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.service-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.service-item {
+  flex: 1 1 200px;
+  min-width: 250px;
+  background-color: #111;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.service-item h3 {
+  color: #D18D62;
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.service-item p {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Categories showcase */
+.b2b-categories h2 {
+  font-size: 32px;
+  color: #D18D62;
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+}
+
+.category-item {
+  background-color: #111;
+  border: 1px solid #333;
+  padding: 20px;
+  border-radius: 6px;
+  text-align: center;
+}
+
+.category-item .image-placeholder {
+  width: 100%;
+  padding-top: 56.25%; /* 16:9 aspect ratio */
+  background-color: #222;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+.category-item h3 {
+  color: #D18D62;
+  font-size: 20px;
+}
+
+/* Why section */
+.b2b-why h2 {
+  font-size: 32px;
+  color: #D18D62;
+  margin-bottom: 15px;
+}
+
+.b2b-why p {
+  color: #ccc;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.b2b-why ul {
+  list-style: disc;
+  padding-left: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.b2b-why li {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+/* How section */
+.b2b-how h2 {
+  font-size: 32px;
+  color: #D18D62;
+  margin-bottom: 15px;
+}
+
+.b2b-how ol {
+  list-style: decimal;
+  padding-left: 20px;
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.b2b-how li {
+  color: #ccc;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.b2b-how strong {
+  color: #D18D62;
+}
+
+/* CTA at bottom of B2B page */
+.b2b-cta {
+  text-align: center;
+  margin: 40px 0;
+}
+
+.b2b-cta .cta-button {
+  display: inline-block;
+}
+
+/* Contact form styling */
+.contact-form {
+  max-width: 600px;
+  margin: 30px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contact-form label {
+  font-weight: 600;
+  color: #D18D62;
+  font-size: 14px;
+}
+
+.contact-form input,
+.contact-form select,
+.contact-form textarea {
+  background-color: #111;
+  border: 1px solid #333;
+  color: #fff;
+  padding: 10px;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+.contact-form input:focus,
+.contact-form select:focus,
+.contact-form textarea:focus {
+  outline: none;
+  border-color: #D18D62;
+}
+
+.contact-btn {
+  align-self: flex-start;
+  background-color: #D18D62;
+  color: #000;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.contact-btn:hover {
+  background-color: #e1a97a;
+}
+
+/* Minimal inline statement for partnership on the home page */
+.b2b-inline {
+  /* Use a smaller, neutral colour so it doesn’t compete with the headline */
+  font-size: 12px;
+  text-align: center;
+  color: #b0b0b0;
+  margin: 10px auto 35px auto;
+  line-height: 1.4;
+  max-width: 900px;
+}
+
+/* Style for the link inside the inline B2B statement */
+.b2b-inline .b2b-link {
+  color: #D18D62;
+  font-size: 12px;
+  margin-left: 6px;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 1px;
+  transition: border-color 0.3s ease;
+}
+.b2b-inline .b2b-link:hover {
+  border-bottom: 1px solid #D18D62;
+}
+
+/* Responsive adjustments for very small screens */
+@media (max-width: 480px) {
+  .b2b-inline {
+    font-size: 10px;
+    margin-top: 10px;
+    margin-bottom: 25px;
+    line-height: 1.4;
+  }
+  .b2b-inline .b2b-link {
+    font-size: 10px;
+  }
+}
+
+/* Mini Luxury Pill Banner for B2B collaboration */
+.b2b-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 14px;
+  margin: 18px auto 38px auto;
+  border: 1px solid rgba(209, 141, 98, 0.35);
+  border-radius: 20px;
+  /* Slightly larger font to ensure readability on desktop */
+  font-size: 14px;
+  color: #d8d8d8;
+  backdrop-filter: blur(2px);
+}
+
+.b2b-pill a {
+  color: #D18D62;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+/* Mobile optimization for the pill banner */
+@media (max-width: 480px) {
+  .b2b-pill {
+    /* Increase mobile font size slightly for readability */
+    font-size: 13px;
+    padding: 5px 12px;
+    margin-top: 12px;
+    margin-bottom: 28px;
+  }
+  .b2b-pill a {
+    font-size: 13px;
+  }
+}
+
+
+/* Category images for B2B signature stones */
+.category-item img.category-image {
+  width: 100%;
+  height: auto;
+  max-height: 260px;
+  object-fit: contain;
+  background-color: #111;
+  padding: 8px;
+  border-radius: 6px;
+  display: block;
+  margin-bottom: 12px;
+}
+
+.cert-button {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 8px 18px;
+  border: 1px solid #D18D62;
+  color: #D18D62;
+  border-radius: 4px;
+  font-size: 14px;
+  text-decoration: none;
+  transition: 0.2s ease;
+}
+.cert-button:hover {
+  background-color: #D18D62;
+  color: #000;
+}
+.cert-thumb {
+  width: 100px;
+  height: auto;
+  border: 1px solid #333;
+  border-radius: 4px;
+  margin-top: 10px;
+  opacity: 0.9;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  transition: 0.25s ease;
+}
+.cert-thumb:hover {
+  opacity: 1;
+  transform: scale(1.03);
+}
+.cert-btn {
+    display: none !important;
+}
+
+@media (max-width: 768px) {
+
+
+  .b2b-hero {
+    padding: 0 18px;
+    margin-top: 36px;
+    margin-bottom: 28px;
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+  }
+
+  .b2b-hero h1 {
+    font-size: 32px;
+    line-height: 1.25;
+    margin-bottom: 14px;
+  }
+
+  .b2b-hero p {
+    font-size: 14px;
+    max-width: 360px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .b2b-services {
+    padding-top: 10px;
+  }
+}
+
+
+/* Note below the gallery */
+.collection-note {
+  text-align: center;
+  margin: 16px auto 48px auto;
+  max-width: 760px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #e0e0e0;
+  opacity: 0.95;
+}
+
+.collection-note .highlight {
+  color: #D18D62;
+  font-weight: 650;
+  letter-spacing: 0.00em;
+  text-transform: uppercase;
+}
+
+
+/* Lower Etsy CTA below the collection
+   Kept away from the hero so the top section stays clean and luxury-focused. */
+.collection-etsy-cta {
+  text-align: center;
+  margin: 10px auto 52px auto;
+}
+
+.collection-etsy-cta .etsy-cta {
+  border: 1px solid #D18D62;
+  background-color: transparent;
+  color: #D18D62;
+  padding: 8px 20px;
+  font-size: 12px;
+  border-radius: 24px;
+  letter-spacing: 1px;
+}
+
+.collection-etsy-cta .etsy-cta:hover {
+  background-color: #D18D62;
+  color: #000;
+}
+
+@media (max-width: 768px) {
+  .collection-etsy-cta {
+    margin: 12px auto 42px auto;
+  }
+
+  .collection-etsy-cta .etsy-cta {
+    font-size: 11px;
+    padding: 8px 18px;
+  }
+}
+
+/* =============================================================
+ * Rosino Artworks
+ */
+nav a[aria-current="page"] {
+  background-color: #D18D62;
+  color: #000;
+}
+
+.artwork-page-heading,
+.artwork-title-block {
+  text-align: center;
+  margin: 30px auto 48px;
+}
+
+.eyebrow {
+  color: #D18D62;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  margin: 0 0 12px;
+}
+
+.artwork-page-heading h1,
+.artwork-title-block h1 {
+  color: #fff;
+  font-size: clamp(34px, 5vw, 58px);
+  line-height: 1.08;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+.artwork-subtitle {
+  color: #aaa;
+  font-size: 15px;
+  margin: 14px 0 0;
+}
+
+.artwork-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-bottom: 60px;
+}
+
+.artwork-card {
+  background: #0b0b0b;
+  border: 1px solid #242424;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.artwork-card a {
+  display: block;
+  color: inherit;
+}
+
+.artwork-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.artwork-card:hover img {
+  transform: scale(1.025);
+  filter: brightness(0.88);
+}
+
+.artwork-card-copy {
+  padding: 18px 18px 20px;
+}
+
+.artwork-number {
+  display: block;
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  margin-bottom: 7px;
+}
+
+.artwork-card h2 {
+  color: #D18D62;
+  font-size: 19px;
+  line-height: 1.25;
+  margin: 0 0 8px;
+}
+
+.artwork-card p {
+  color: #9c9c9c;
+  font-size: 12px;
+  margin: 0;
+}
+
+.artwork-back {
+  display: inline-block;
+  color: #aaa;
+  font-size: 12px;
+  margin-bottom: 10px;
+}
+
+.artwork-back:hover {
+  color: #D18D62;
+}
+
+.artwork-hero {
+  max-height: 820px;
+  object-fit: contain;
+  background: #080808;
+  border: 1px solid #1c1c1c;
+}
+
+.artwork-facts {
+  background: #0b0b0b;
+  border: 1px solid #242424;
+  border-radius: 6px;
+  padding: 28px;
+  margin: 28px 0 70px;
+}
+
+.artwork-facts dl {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0 42px;
+  margin: 0 0 28px;
+}
+
+.artwork-facts dl > div {
+  display: grid;
+  grid-template-columns: 130px 1fr;
+  gap: 16px;
+  border-bottom: 1px solid #222;
+  padding: 12px 0;
+}
+
+.artwork-facts dt {
+  color: #777;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.artwork-facts dd {
+  color: #ddd;
+  font-size: 13px;
+  margin: 0;
+}
+
+.artwork-enquiry {
+  display: inline-block;
+  border: 1px solid #D18D62;
+  border-radius: 24px;
+  color: #D18D62;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 9px 17px;
+  text-transform: uppercase;
+}
+
+.artwork-enquiry:hover {
+  background: #D18D62;
+  color: #000;
+}
+
+.artwork-section {
+  margin: 0 0 72px;
+}
+
+.artwork-section h2 {
+  color: #D18D62;
+  font-size: 21px;
+  margin: 0 0 20px;
+}
+
+.artwork-section-intro {
+  color: #9c9c9c;
+  font-size: 13px;
+  line-height: 1.6;
+  margin: -8px 0 22px;
+}
+
+.artwork-room-scene {
+  margin: 0;
+  background: #080808;
+  border: 1px solid #1e1e1e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.artwork-room-scene img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.artwork-room-scene figcaption {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 10px 12px;
+  text-transform: uppercase;
+}
+
+.gallery.artwork-photo-grid,
+.gallery.artwork-reference-grid,
+.gallery.certificate-image-wrap {
+  display: grid;
+  margin-bottom: 0;
+}
+
+.gallery.artwork-photo-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.gallery.artwork-reference-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.artwork-photo-grid figure,
+.artwork-reference-grid figure {
+  margin: 0;
+  background: #080808;
+  border: 1px solid #1e1e1e;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.gallery.artwork-photo-grid img,
+.gallery.artwork-reference-grid img,
+.gallery.certificate-image-wrap img {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  border-radius: 0;
+  background: #080808;
+}
+
+.gallery.artwork-photo-grid img {
+  aspect-ratio: 4 / 3;
+}
+
+.gallery.artwork-reference-grid img {
+  min-height: 340px;
+  max-height: 620px;
+}
+
+.artwork-photo-grid figcaption,
+.artwork-reference-grid figcaption {
+  color: #777;
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  padding: 9px 12px;
+  text-transform: uppercase;
+}
+
+.artwork-reference-grid .wide-reference {
+  grid-column: 1 / -1;
+}
+
+.gallery.certificate-image-wrap {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+}
+
+.gallery.certificate-image-wrap img {
+  border: 1px solid #242424;
+  cursor: pointer;
+}
+
+@media (max-width: 980px) {
+  .artwork-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .artwork-facts dl {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .artwork-index,
+  .artwork-detail {
+    width: 92%;
+    padding-top: 16px;
+  }
+
+  .artwork-page-heading,
+  .artwork-title-block {
+    margin: 22px auto 30px;
+  }
+
+  .artwork-grid,
+  .gallery.artwork-photo-grid,
+  .gallery.artwork-reference-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .artwork-facts {
+    padding: 18px;
+    margin-bottom: 48px;
+  }
+
+  .artwork-facts dl > div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .artwork-reference-grid .wide-reference {
+    grid-column: auto;
+  }
+
+  .gallery.artwork-reference-grid img {
+    min-height: 0;
+    max-height: none;
+  }
+}
