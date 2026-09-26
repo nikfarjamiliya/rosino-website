@@ -1,6 +1,6 @@
 # Rosino — Natural Stones & Artworks
 
-Rosino is a responsive, multi-page portfolio and catalogue website for a Cologne-based natural-stone and artwork brand. The experience presents one-of-a-kind stones, framed compositions, and collaboration options for designers and brands through a restrained, gallery-inspired interface.
+Rosino is a responsive, multi-page portfolio and catalogue website for a Cologne-based natural-stone and artwork brand. The experience presents one-of-a-kind stones, framed compositions, and collaboration options for designers and brands through a restrained, Apple-inspired dark interface with copper accents.
 
 > This is a portfolio-safe edition of the project. Product imagery has been web-optimized with metadata removed, while production certificates, backup files, and business-specific legal documents are intentionally excluded.
 
@@ -12,12 +12,13 @@ Rosino is a responsive, multi-page portfolio and catalogue website for a Cologne
 ## Highlights
 
 - Responsive layout for desktop, tablet, and mobile
+- Apple-inspired visual system with quiet surfaces, optical typography, translucent navigation, and immediate press feedback
 - Dedicated collection, artwork, product-detail, about, contact, and legal pages
 - Image galleries with an interactive lightbox
 - Client-side catalogue pagination
 - Mobile navigation with an animated menu control
-- GDPR-conscious cookie-consent interface
-- English and German legal information
+- Reduced-motion and reduced-transparency accessibility support
+- Portfolio-safe cookie and legal notices
 - Custom favicon and web-app manifest
 - No framework or build step required
 
@@ -35,8 +36,8 @@ Rosino is a responsive, multi-page portfolio and catalogue website for a Cologne
 - Semantic HTML5
 - Modern CSS, including Grid, Flexbox, transitions, and responsive breakpoints
 - Vanilla JavaScript
-- Google Fonts — Montserrat
-- Osano Cookie Consent, loaded from jsDelivr
+- Native system-font stack
+- No framework or third-party runtime dependency
 
 ## Project Structure
 
@@ -74,7 +75,7 @@ The project can be hosted directly with GitHub Pages:
 
 ## Portfolio Notes
 
-This repository demonstrates the complete design and front-end implementation of the Rosino website, including information architecture, responsive behavior, product presentation, gallery interactions, and a portfolio-safe legal notice. Production-only documents and original-resolution source assets are not part of this public edition.
+This repository demonstrates the complete design and front-end implementation of the Rosino website, including its Apple-inspired redesign, information architecture, responsive behavior, product presentation, gallery interactions, and a portfolio-safe legal notice. Production-only documents and original-resolution source assets are not part of this public edition.
 
 ## Usage and Rights
 

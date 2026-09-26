@@ -1,176 +1,137 @@
-// Initialize cookie consent after page load
-// Configure and display a GDPR‑compliant cookie banner.
-// The banner now offers clear “Accept” and “Reject” choices and links
-// to the cookies section of the combined legal page.  Only essential
-// cookies are loaded until the visitor consents.
-window.addEventListener('load', function() {
-  if (window.cookieconsent) {
-    window.cookieconsent.initialise({
-      // Use our copper colour for buttons and a dark popup to match the site
-      palette: {
-        popup: { background: '#101010' },
-        button: { background: '#D18D62', text: '#000' },
-        highlight: { background: '#222', text: '#fff' }
-      },
-      theme: 'classic',
-      position: 'bottom',
-      // Opt‑in mode ensures no optional cookies are set until consent
-      type: 'opt-in',
-      revokable: true,
-      // Customise the banner text to reflect that we only use a single essential cookie.
-      // No analytics or advertising cookies are set on this site, so we change the
-      // message accordingly and simplify the button labels. Users can still read
-      // more details via the link to our cookie notice.
-      content: {
-        message: 'We only use an essential cookie to remember your settings. No analytics or advertising cookies are used.',
-        allow: 'OK',
-        deny: 'Decline',
-        link: 'More info',
-        href: 'legal.html#cookies'
-      },
-      onInitialise: function (status) {
-        var didConsent = this.hasConsented();
-        // Place any optional script loading here. If the visitor has
-        // consented we could enable analytics/tracking scripts.
-        if (didConsent) {
-          // Example: loadAnalytics();
-        }
-      },
-      onStatusChange: function(status, prior) {
-        var didConsent = this.hasConsented();
-        if (didConsent) {
-          // User has accepted cookies. Optional scripts could be enabled here.
-        } else {
-          // User has declined cookies. Ensure optional cookies remain disabled.
-        }
+/* Interruptible, critically damped springs preserve position and velocity. */
+(() => {
+  'use strict';
+  const reducedMotion = matchMedia('(prefers-reduced-motion: reduce)');
+  function spring(render, initial = 0) {
+    let value = initial, velocity = 0, target = initial, frame = 0, last = 0, settled;
+    function tick(time) {
+      const dt = Math.min((time - last) / 1000 || 1 / 60, 1 / 30); last = time;
+      velocity += ((target - value) * 380 - velocity * 39) * dt;
+      value += velocity * dt; render(value);
+      if (Math.abs(target - value) < .001 && Math.abs(velocity) < .01) {
+        value = target; velocity = 0; frame = 0; render(value);
+        if (settled) { const done = settled; settled = null; done(); }
+      } else frame = requestAnimationFrame(tick);
+    }
+    return (next, done) => {
+      target = next; settled = done;
+      if (reducedMotion.matches) {
+        cancelAnimationFrame(frame); frame = 0; value = target; velocity = 0; render(value);
+        if (settled) { const finish = settled; settled = null; finish(); }
+      } else if (!frame) { last = performance.now(); frame = requestAnimationFrame(tick); }
+    };
+  }
+  const menu = document.getElementById('main-nav'), toggle = document.getElementById('hamburger');
+  const narrow = matchMedia('(max-width: 800px)');
+  let menuOpen = false;
+  const menuSpring = spring(value => {
+    if (!narrow.matches) return;
+    menu.style.opacity = String(value);
+    menu.style.transform = reducedMotion.matches ? 'none' : `translateY(${(value - 1) * 12}px) scaleY(${.97 + value * .03})`;
+  });
+  function setMenu(open, returnFocus = false) {
+    menuOpen = open; toggle.setAttribute('aria-expanded', String(open));
+    toggle.setAttribute('aria-label', open ? 'Close navigation' : 'Open navigation');
+    menu.inert = narrow.matches && !open;
+    if (open) menu.classList.add('open');
+    menuSpring(open ? 1 : 0, () => { if (!menuOpen) menu.classList.remove('open'); });
+    if (returnFocus) toggle.focus();
+  }
+  toggle.addEventListener('click', () => setMenu(!menuOpen));
+  document.addEventListener('keydown', event => { if (event.key === 'Escape' && menuOpen) setMenu(false, true); });
+  document.addEventListener('click', event => { if (menuOpen && !event.target.closest('.site-header')) setMenu(false); });
+  menu.addEventListener('click', event => { if (event.target.closest('a') && narrow.matches) setMenu(false); });
+  document.addEventListener('focusin', event => { if (menuOpen && !event.target.closest('.site-header')) setMenu(false); });
+  function resetMenu() {
+    menuOpen = false; toggle.setAttribute('aria-expanded', 'false'); toggle.setAttribute('aria-label', 'Open navigation');
+    menu.classList.remove('open'); menu.style.opacity = ''; menu.style.transform = ''; menu.inert = narrow.matches;
+  }
+  narrow.addEventListener('change', resetMenu); resetMenu();
+
+  // Preserve the essential preference cookie without third-party dependencies.
+  const cookieName = 'cookieconsent_status';
+  let notice;
+  function showCookieNotice() {
+    if (notice) return;
+    notice = document.createElement('aside'); notice.className = 'cookie-notice'; notice.setAttribute('aria-label', 'Cookie preferences');
+    notice.innerHTML = '<h2>A little privacy. By nature.</h2><p>Only an essential cookie remembers your preference. No analytics or advertising cookies. <a href="legal.html#cookies">More info</a></p><div class="cookie-actions"><button type="button" data-consent="allow">OK</button><button type="button" data-consent="deny">Decline</button></div>';
+    notice.addEventListener('click', event => {
+      const button = event.target.closest('[data-consent]'); if (!button) return;
+      document.cookie = `${cookieName}=${button.dataset.consent}; Max-Age=31536000; Path=/; SameSite=Lax${location.protocol === 'https:' ? '; Secure' : ''}`;
+      notice.remove(); notice = null;
+    });
+    document.body.append(notice);
+  }
+  if (!document.cookie.split(';').some(item => item.trim().startsWith(cookieName + '='))) showCookieNotice();
+  const cookieSettings = document.createElement('button'); cookieSettings.type = 'button'; cookieSettings.className = 'cookie-settings'; cookieSettings.textContent = 'Cookie settings';
+  cookieSettings.addEventListener('click', () => { showCookieNotice(); notice.querySelector('button').focus(); });
+  document.querySelector('.footer-bottom').append(cookieSettings);
+
+  const grid = document.querySelector('.stone-grid'), pagination = document.querySelector('.pagination');
+  if (grid && pagination) {
+    const items = Array.from(grid.children), perPage = 9, total = Math.ceil(items.length / perPage);
+    let current = 1; pagination.setAttribute('aria-label', 'Collection pages');
+    function updatePage(page, scroll = false) {
+      current = Math.max(1, Math.min(total, page));
+      items.forEach((item, index) => { item.hidden = index < (current - 1) * perPage || index >= current * perPage; });
+      pagination.replaceChildren();
+      function control(label, value) {
+        const button = document.createElement('button'); button.type = 'button'; button.className = 'page-link'; button.textContent = label;
+        button.addEventListener('click', () => updatePage(value, true)); pagination.append(button);
       }
+      if (current > 1) control('← Previous', current - 1);
+      const status = document.createElement('span'); status.className = 'page-indicator'; status.setAttribute('role', 'status'); status.textContent = `${current} / ${total}`; pagination.append(status);
+      if (current < total) control('Next →', current + 1);
+      if (scroll) { const heading = document.getElementById('collection-heading'); heading.tabIndex = -1; heading.focus({preventScroll:true}); heading.scrollIntoView({block:'center', behavior:reducedMotion.matches ? 'instant' : 'smooth'}); }
+    }
+    if (total > 1) updatePage(1); else pagination.hidden = true;
+  }
+
+  // Native dialog traps focus and makes the background inert.
+  const imageTriggers = Array.from(document.querySelectorAll('.hero, .gallery img'));
+  const pictures = imageTriggers.filter((picture, index) => imageTriggers.findIndex(item => item.src === picture.src) === index);
+  if (pictures.length) {
+    const dialog = document.createElement('dialog'); dialog.className = 'lightbox'; dialog.setAttribute('aria-label', 'Image viewer');
+    dialog.innerHTML = '<div class="lightbox-surface"><button type="button" class="lightbox-close" aria-label="Close image viewer">×</button><button type="button" class="lightbox-prev" aria-label="Previous image">←</button><img class="lightbox-img" alt=""><button type="button" class="lightbox-next" aria-label="Next image">→</button><p class="lightbox-caption"><span class="lightbox-label"></span><span class="lightbox-status" aria-live="polite"></span></p></div>';
+    document.body.append(dialog);
+    const surface = dialog.querySelector('.lightbox-surface'), largeImage = dialog.querySelector('img');
+    let current = 0, opener, closing = false, previousOverflow = '';
+    const modalSpring = spring(value => { surface.style.opacity = String(value); surface.style.transform = reducedMotion.matches ? 'none' : `scale(${.97 + value * .03})`; });
+    function display(index) {
+      current = (index + pictures.length) % pictures.length; largeImage.src = pictures[current].src; largeImage.alt = pictures[current].alt;
+      dialog.querySelector('.lightbox-label').textContent = pictures[current].alt;
+      dialog.querySelector('.lightbox-status').textContent = `${current + 1} / ${pictures.length}`;
+    }
+    function open(index, trigger) {
+      opener = trigger; display(index); closing = false;
+      previousOverflow = document.body.style.overflow; document.body.style.overflow = 'hidden';
+      surface.style.opacity = '0'; dialog.showModal(); modalSpring(1);
+    }
+    function close() {
+      if (closing) return; closing = true;
+      modalSpring(0, () => { dialog.close(); document.body.style.overflow = previousOverflow; if (opener) opener.focus({preventScroll:true}); closing = false; });
+    }
+    imageTriggers.forEach(picture => {
+      const index = pictures.findIndex(item => item.src === picture.src);
+      picture.tabIndex = 0; picture.setAttribute('role', 'button'); picture.setAttribute('aria-haspopup', 'dialog'); picture.setAttribute('aria-label', `Enlarge ${picture.alt}`);
+      picture.addEventListener('click', () => open(index, picture));
+      picture.addEventListener('keydown', event => { if (event.key === 'Enter' || event.key === ' ') { event.preventDefault(); open(index, picture); } });
+    });
+    dialog.querySelector('.lightbox-close').addEventListener('click', close);
+    dialog.querySelector('.lightbox-prev').addEventListener('click', () => display(current - 1));
+    dialog.querySelector('.lightbox-next').addEventListener('click', () => display(current + 1));
+    dialog.addEventListener('cancel', event => { event.preventDefault(); close(); });
+    surface.addEventListener('click', event => { if (event.target === surface) close(); });
+    dialog.addEventListener('keydown', event => {
+      if (event.key === 'ArrowRight') { event.preventDefault(); display(current + 1); }
+      if (event.key === 'ArrowLeft') { event.preventDefault(); display(current - 1); }
     });
   }
-});
-
-// Toggle navigation menu on mobile
-// When the DOM is fully loaded, attach a click handler
-// to the hamburger button. Toggling the 'open' class on the
-// nav element controls visibility of the mobile menu, and
-// toggling the 'active' class on the button animates the bars.
-document.addEventListener('DOMContentLoaded', function() {
-  const hamburger = document.getElementById('hamburger');
-  const nav = document.querySelector('header nav');
-  if (hamburger && nav) {
-    hamburger.addEventListener('click', function() {
-      nav.classList.toggle('open');
-      hamburger.classList.toggle('active');
-    });
-  }
-});
-
-// Set up lightbox functionality for stone detail pages
-// This runs once the DOM is loaded. If a `.gallery` exists on the page,
-// a modal lightbox will be created. Clicking on any gallery image or
-// the hero image will open the selected image in an overlay. The
-// overlay darkens the background and disables scrolling until closed.
-document.addEventListener('DOMContentLoaded', function() {
-  const gallery = document.querySelector('.gallery');
-  if (gallery) {
-    // Create the lightbox elements
-    const lightbox = document.createElement('div');
-    lightbox.className = 'lightbox-overlay';
-    lightbox.innerHTML = '<span class="close">&times;</span><img class="lightbox-img" src="" alt="Expanded Image">';
-    document.body.appendChild(lightbox);
-    const lightboxImg = lightbox.querySelector('img');
-    const closeBtn = lightbox.querySelector('.close');
-    // Function to show the lightbox
-    function showLightbox(src) {
-      lightboxImg.src = src;
-      lightbox.classList.add('active');
-      // Disable background scrolling while lightbox is open
-      document.body.style.overflow = 'hidden';
-    }
-    // Function to hide the lightbox
-    function hideLightbox() {
-      lightbox.classList.remove('active');
-      document.body.style.overflow = '';
-    }
-    // Close button
-    closeBtn.addEventListener('click', function(event) {
-      event.stopPropagation();
-      hideLightbox();
-    });
-    // Close when clicking outside the image
-    lightbox.addEventListener('click', function(event) {
-      if (event.target === lightbox) {
-        hideLightbox();
-      }
-    });
-    // Attach click handlers to hero and gallery images
-    const imagesToBind = [];
-    const hero = document.querySelector('.hero');
-    if (hero) imagesToBind.push(hero);
-    gallery.querySelectorAll('img').forEach(function(img) {
-      imagesToBind.push(img);
-    });
-    imagesToBind.forEach(function(img) {
-      // Only allow lightbox on stone pages; ensure not index
-      img.style.cursor = 'pointer';
-      img.addEventListener('click', function() {
-        showLightbox(img.src);
-      });
-    });
-  }
-});
-
-// Build simple client-side pagination for the product grid on the home page.
-// It divides the products into pages of a fixed size and adds Prev/Next links
-// along with a page indicator (e.g. "1 / 3"). This runs only on the index page
-// where a `.stone-grid` exists. If the number of products is less than
-// or equal to the per-page limit, the pagination controls are hidden.
-document.addEventListener('DOMContentLoaded', function() {
-  const grid = document.querySelector('.stone-grid');
-  const pagination = document.querySelector('.pagination');
-  if (!grid || !pagination) return;
-  const items = Array.from(grid.children);
-  const itemsPerPage = 10; // display 10 products per page
-  const totalPages = Math.ceil(items.length / itemsPerPage);
-  let currentPage = 1;
-
-  function updatePage(page) {
-    currentPage = page;
-    // show/hide products
-    items.forEach((item, index) => {
-      const start = (page - 1) * itemsPerPage;
-      const end = page * itemsPerPage;
-      item.style.display = (index >= start && index < end) ? '' : 'none';
-    });
-    // rebuild pagination controls
-    pagination.innerHTML = '';
-    if (totalPages > 1 && page > 1) {
-      const prevLink = document.createElement('a');
-      prevLink.href = '#';
-      prevLink.textContent = 'Prev';
-      prevLink.className = 'page-link prev';
-      prevLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        updatePage(currentPage - 1);
-      });
-      pagination.appendChild(prevLink);
-    }
-    // page indicator
-    const indicator = document.createElement('span');
-    indicator.className = 'page-indicator';
-    indicator.textContent = `${page} / ${totalPages}`;
-    pagination.appendChild(indicator);
-    if (totalPages > 1 && page < totalPages) {
-      const nextLink = document.createElement('a');
-      nextLink.href = '#';
-      nextLink.textContent = 'Next';
-      nextLink.className = 'page-link next';
-      nextLink.addEventListener('click', function(e) {
-        e.preventDefault();
-        updatePage(currentPage + 1);
-      });
-      pagination.appendChild(nextLink);
-    }
-  }
-  // initialize
-  updatePage(currentPage);
-});
+  const form = document.querySelector('.contact-form');
+  if (form) form.addEventListener('submit', event => {
+    event.preventDefault(); if (!form.reportValidity()) return;
+    const data = new FormData(form), subject = `Rosino ${data.get('inquiry-type')} enquiry`;
+    const body = `Name: ${data.get('name')}\nEmail: ${data.get('email')}\n\n${data.get('message')}`;
+    location.href = `mailto:sale@rosinoonline.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
