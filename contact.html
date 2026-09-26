@@ -1,43 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact – Rosino</title>
-    <link rel="stylesheet" href="style.css">
-    <!-- Cookie consent library -->
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <a href="index.html"><img src="assets/images/logo.png" alt="Rosino Logo"></a>
-        <span class="origin">COLOGNE · GERMANY</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="artworks.html">Artworks</a></li>
-          <!-- Added link to the B2B page for luxury brand partners -->
-          <li><a href="Designers &amp; Brands.html">Designers &amp; Brands</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="mailto:sale@rosinoonline.com">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-        <span></span>
-        <span></span>
-        <span></span>
-      </button>
-    </header>
-    <div class="container">
-      <h1>Contact Us</h1>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact – Rosino</title>
+<meta name="theme-color" content="#000000"><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="style.css?v=rosino-copper-1"><script src="script.js" defer></script>
+</head><body class="contact-page"><a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Rosino home"><img src="assets/images/logo.png" alt="Rosino" width="2048" height="459"></a>
+      <nav id="main-nav" aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="collection.html">Collection</a></li><li><a href="artworks.html">Artworks</a></li><li><a href="Designers &amp; Brands.html">Designers &amp; Brands</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html" aria-current="page">Contact</a></li></ul></nav>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button>
+    </div></header><main id="main" class="container">
+      <p class="eyebrow">CONTACT ROSINO</p><h1>Let’s find<br>your one of a kind.</h1>
       <p>We would love to hear from you. For inquiries about our pieces or any other questions, please reach out via email.</p>
       <p>Email: <a href="mailto:sale@rosinoonline.com">sale@rosinoonline.com</a></p>
 
-      <!-- Contact form allowing general or business enquiries -->
+
       <form class="contact-form" action="mailto:sale@rosinoonline.com" method="post" enctype="text/plain">
         <label for="name">Your Name</label>
         <input type="text" id="name" name="name" required>
@@ -54,12 +30,10 @@
         <label for="message">Message</label>
         <textarea id="message" name="message" rows="4" required></textarea>
 
-        <button type="submit" class="contact-btn">Send</button>
+        <button type="submit" class="contact-btn">Open email draft <span aria-hidden="true">↗</span></button><p class="form-note">This opens your email app with your enquiry. You can review it before sending.</p>
       </form>
-    </div>
-    <div class="footer">
-      <p>&copy; 2025 Rosino. All rights reserved. | <a href="legal.html">Legal &amp; Policies</a></p>
-    </div>
-    <script src="script.js"></script>
-  </body>
-</html>
+    </main><footer class="footer"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" aria-label="Rosino home"><img src="assets/images/logo.png" alt="Rosino" width="2048" height="459" loading="lazy"></a><p>Nature chooses you.</p></div>
+  <div class="footer-links"><a href="collection.html">Collection</a><a href="artworks.html">Artworks</a><a href="contact.html">Get in touch <span aria-hidden="true">↗</span></a></div>
+  <div class="footer-bottom"><p>© 2026 Rosino. All rights reserved.</p><a href="legal.html">Legal &amp; Policies</a><span>Cologne · Germany</span></div>
+</div></footer></body></html>

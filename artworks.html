@@ -1,50 +1,23 @@
 <!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Rosino | Artworks</title>
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="icon" href="favicon.ico" sizes="any">
-    <link rel="manifest" href="site.webmanifest">
-    <meta name="theme-color" content="#000000">
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.css">
-    <script src="https://cdn.jsdelivr.net/npm/cookieconsent@3/build/cookieconsent.min.js"></script>
-  </head>
-  <body>
-    <header>
-      <div class="logo">
-        <a href="index.html"><img src="assets/images/logo.png" alt="Rosino Logo"></a>
-        <span class="origin">COLOGNE · GERMANY</span>
-      </div>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="collection.html">Collection</a></li>
-          <li><a href="artworks.html" aria-current="page">Artworks</a></li>
-          <li><a href="Designers &amp; Brands.html">Designers &amp; Brands</a></li>
-          <li><a href="about.html">About Us</a></li>
-          <li><a href="mailto:sale@rosinoonline.com">Contact</a></li>
-        </ul>
-      </nav>
-      <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
-        <span></span><span></span><span></span>
-      </button>
-    </header>
-
-    <main class="container artwork-index">
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rosino | Artworks</title><meta name="description" content="Discover original Rosino artworks composed with natural stone.">
+<meta name="theme-color" content="#000000"><link rel="icon" href="favicon.ico" sizes="any"><link rel="apple-touch-icon" href="apple-touch-icon.png"><link rel="manifest" href="site.webmanifest">
+<link rel="stylesheet" href="style.css?v=rosino-copper-1"><script src="script.js" defer></script>
+</head><body class="artworks-body"><a class="skip-link" href="#main">Skip to content</a>
+    <header class="site-header"><div class="header-inner">
+      <a class="logo" href="index.html" aria-label="Rosino home"><img src="assets/images/logo.png" alt="Rosino" width="2048" height="459"></a>
+      <nav id="main-nav" aria-label="Main navigation"><ul><li><a href="index.html">Home</a></li><li><a href="collection.html">Collection</a></li><li><a href="artworks.html" aria-current="page">Artworks</a></li><li><a href="Designers &amp; Brands.html">Designers &amp; Brands</a></li><li><a href="about.html">About Us</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+      <button class="hamburger" id="hamburger" type="button" aria-label="Open navigation" aria-controls="main-nav" aria-expanded="false"><span></span><span></span></button>
+    </div></header><main id="main" class="container artwork-index">
       <div class="artwork-page-heading">
         <p class="eyebrow">ROSINO ARTWORKS</p>
-        <h1>Artworks with Natural Stone</h1>
+        <h1>Nature, beautifully framed.</h1><p class="page-intro">Natural stone. A singular composition. An entirely different way to see art.</p>
       </div>
 
       <div class="artwork-grid">
         <article class="artwork-card">
           <a href="artwork-persischer-tuerkis.html">
-            <img src="assets/images/artworks/persischer-tuerkis/01.jpg" alt="Persischer Türkis artwork">
+            <img src="assets/images/artworks/persischer-tuerkis/01.jpg" alt="Persischer Türkis artwork" decoding="async">
             <div class="artwork-card-copy">
               <span class="artwork-number"></span>
               <h2>Persischer Türkis</h2>
@@ -55,7 +28,7 @@
 
         <article class="artwork-card">
           <a href="artwork-phoenix-achat.html">
-            <img src="assets/images/artworks/phoenix-achat/01.jpg" alt="Phönix Achat artwork">
+            <img src="assets/images/artworks/phoenix-achat/01.jpg" alt="Phönix Achat artwork" decoding="async" loading="lazy">
             <div class="artwork-card-copy">
               <span class="artwork-number"></span>
               <h2>Phönix Achat</h2>
@@ -66,7 +39,7 @@
 
         <article class="artwork-card">
           <a href="artwork-uralter-wald-achat.html">
-            <img src="assets/images/artworks/uralter-wald-achat/01.jpg" alt="Uralter Wald Achat artwork">
+            <img src="assets/images/artworks/uralter-wald-achat/01.jpg" alt="Uralter Wald Achat artwork" decoding="async" loading="lazy">
             <div class="artwork-card-copy">
               <span class="artwork-number"></span>
               <h2>Uralter Wald Achat</h2>
@@ -75,28 +48,25 @@
           </a>
         </article>
       </div>
-      </section>
-      <!-- Pagination bar for product pages -->
-      <div class="pagination">Page 1 / 1</div>
 
-      <!-- Collection note -->
+
+
+
+
       <div class="collection-note">
         <span class="highlight">Only a glimpse of Rosino.</span>
         This gallery shows just a glimpse of Rosino artworks – most pieces are currently being photographed and will be added soon.
       </div>
 
-      <!-- General purchase channel: Rosino available works are sold through Etsy -->
+
       <div class="collection-etsy-cta">
         <a href="https://rosinoshop.etsy.com" target="_blank" rel="noopener noreferrer" class="cta-button etsy-cta">
           Available Works on Etsy
         </a>
       </div>
 
-    </main>
-
-    <footer class="footer">
-      <p>&copy; 2026 Rosino. All rights reserved. | <a href="legal.html">Legal &amp; Policies</a></p>
-    </footer>
-    <script src="script.js"></script>
-  </body>
-</html>
+    </main><footer class="footer"><div class="footer-inner">
+  <div class="footer-brand"><a href="index.html" aria-label="Rosino home"><img src="assets/images/logo.png" alt="Rosino" width="2048" height="459" loading="lazy"></a><p>Nature chooses you.</p></div>
+  <div class="footer-links"><a href="collection.html">Collection</a><a href="artworks.html">Artworks</a><a href="contact.html">Get in touch <span aria-hidden="true">↗</span></a></div>
+  <div class="footer-bottom"><p>© 2026 Rosino. All rights reserved.</p><a href="legal.html">Legal &amp; Policies</a><span>Cologne · Germany</span></div>
+</div></footer></body></html>
